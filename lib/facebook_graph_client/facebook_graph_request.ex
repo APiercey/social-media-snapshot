@@ -1,7 +1,6 @@
 defmodule FacebookGraphClient.FacebookGraphRequest do
-  defstruct [:properties, :token, :user_id]
+  @properties [:token, :user_id]
+  defstruct @properties
 
-  def new(token: _token, user_id: _user_id) do
-    %__MODULE__{}
-  end
+  def new(params), do: __MODULE__ |> struct(params)
 end

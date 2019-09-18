@@ -11,13 +11,14 @@ defmodule FacebookGraphClientTest do
 
   describe "configure/1" do
     test "provides a %FacebookGraphRequest{}" do
-      assert %FacebookGraphRequest{} = FacebookGraphClient.new(@valid_config_params)
+      assert %FacebookGraphRequest{} =
+               @valid_config_params |> FacebookGraphClient.new()
     end
   end
 
   describe "fetch_user_information/1" do
     setup do
-      request = FacebookGraphClient.new(@valid_config_params) |> IO.inspect()
+      request = @valid_config_params |> FacebookGraphClient.new()
 
       %{request: request}
     end
