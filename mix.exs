@@ -22,12 +22,17 @@ defmodule SocialMediaSnapshot.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:mix_test_watch, "~> 0.9.0"},
-      # {:commanded, "~> 0.19"},
+      {:mix_test_watch, "~> 0.9.0", only: :dev, runtime: false},
+      {:commanded, git: "https://github.com/commanded/commanded.git"},
       {:jason, "~> 1.1"},
       {:ueberauth, "~> 0.6"},
       {:plug_cowboy, "~> 2.0"},
-      {:ueberauth_facebook, "~> 0.8"}
+      {:ueberauth_facebook, "~> 0.8"},
+      {:poison, "~> 4.0"},
+      {:postgrex, ">= 0.0.0"},
+      {:httpoison, "~> 1.5"},
+      {:commanded_extreme_adapter,
+       git: "https://github.com/commanded/commanded-extreme-adapter.git"}
     ]
   end
 end

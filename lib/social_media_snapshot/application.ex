@@ -11,7 +11,8 @@ defmodule SocialMediaSnapshot.Application do
         scheme: :http,
         plug: SocialMediaSnapshotWeb.Router,
         options: [port: 4000]
-      )
+      ),
+      SocialMediaIntegration.Application
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
