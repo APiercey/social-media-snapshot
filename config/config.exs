@@ -9,15 +9,6 @@ config :ueberauth, Ueberauth.Strategy.Facebook.OAuth,
   client_id: System.get_env("FACEBOOK_CLIENT_ID"),
   client_secret: System.get_env("FACEBOOK_CLIENT_SECRET")
 
-# config :commanded,
-#   event_store_adapter: Commanded.EventStore.Adapters.EventStore
-
-# config :social_media_snapshot, SocialMediaSnapshot.EventStore,
-#   serializer: Commanded.Serialization.JsonSerializer,
-#   url: System.get_env("DATABASE_URL")
-
-# config :social_media_integration, SocialMediaIntegration.Application,
-
 config :social_media_snapshot, SocialMediaIntegration.Application,
   event_store: [
     adapter: Commanded.EventStore.Adapters.Extreme,
@@ -33,5 +24,13 @@ config :social_media_snapshot, SocialMediaIntegration.Application,
       max_attempts: :infinity
     ]
   ]
+
+config :social_media_snapshot, SocialMediaIntegration.Repo,
+  database: "snapshots",
+  username: "postgres",
+  hostname: "localhost"
+
+config :social_media_snapshot,
+  ecto_repos: [SocialMediaIntegration.Repo]
 
 import_config "config.#{Mix.env()}.exs"

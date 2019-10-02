@@ -9,7 +9,7 @@ defmodule FacebookGraphClient.FacebookGraphRequestTest do
   ]
 
   describe "new/1" do
-    test "returns a %FacebookGraphRequest{}", request do
+    test "returns a %FacebookGraphRequest{}" do
       assert %FacebookGraphRequest{} = FacebookGraphRequest.new(@params)
     end
 

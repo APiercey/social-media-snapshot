@@ -7,3 +7,8 @@ event_store:
     EVENTSTORE_START_STANDARD_PROJECTIONS: "True"
     EVENTSTORE_RUN_PROJECTIONS: "all"
 
+read_database:
+  image: postgres
+  ports:
+    - 5432:5432
+

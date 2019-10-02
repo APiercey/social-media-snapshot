@@ -12,7 +12,10 @@ defmodule SocialMediaSnapshot.Application do
         plug: SocialMediaSnapshotWeb.Router,
         options: [port: 4000]
       ),
-      SocialMediaIntegration.Application
+      SocialMediaIntegration.Application,
+      SocialMediaIntegration.Snapshots.SnapshotProjector,
+      SocialMediaIntegration.Snapshots.SnapshotEventHandler,
+      SocialMediaIntegration.Repo
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
