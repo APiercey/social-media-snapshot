@@ -1,4 +1,5 @@
 %{
+  "bypass": {:hex, :bypass, "1.0.0", "b78b3dcb832a71aca5259c1a704b2e14b55fd4e1327ff942598b4e7d1a7ad83d", [:mix], [{:plug, "~> 1.7", [hex: :plug, repo: "hexpm", optional: false]}, {:plug_cowboy, "~> 1.0 or ~> 2.0", [hex: :plug_cowboy, repo: "hexpm", optional: false]}], "hexpm"},
   "certifi": {:hex, :certifi, "2.5.1", "867ce347f7c7d78563450a18a6a28a8090331e77fa02380b4a21962a65d36ee5", [:rebar3], [{:parse_trans, "~>3.3", [hex: :parse_trans, repo: "hexpm", optional: false]}], "hexpm"},
   "commanded": {:git, "https://github.com/commanded/commanded.git", "f635b692b28192a1fa1b67acac3dfd8d23883dc1", []},
   "commanded_ecto_projections": {:git, "https://github.com/commanded/commanded-ecto-projections.git", "8e8e35130e1dcb768b725599f454281ed7b75cf7", []},

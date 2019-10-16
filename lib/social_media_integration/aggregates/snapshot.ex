@@ -30,7 +30,7 @@ defmodule SocialMediaIntegration.Aggregates.Snapshot do
     %{snapshot | uuid: event.snapshot_id, user_id: event.user_id, status: "requested"}
   end
 
-  def apply(%__MODULE__{} = snapshot, %SnapshotSucceeded{} = event) do
+  def apply(%__MODULE__{} = snapshot, %SnapshotSucceeded{} = _event) do
     %{snapshot | status: "successful"}
   end
 end

@@ -33,4 +33,7 @@ config :social_media_snapshot, SocialMediaIntegration.Repo,
 config :social_media_snapshot,
   ecto_repos: [SocialMediaIntegration.Repo]
 
+config :social_media_snapshot,
+  facebook_base_url: "https://graph.facebook.com"
+
 import_config "config.#{Mix.env()}.exs"

@@ -17,7 +17,7 @@ defmodule SocialMediaSnapshot.MixProject do
   def application do
     [
       extra_applications: [:logger, :ueberauth, :ueberauth_facebook],
-      mod: {SocialMediaSnapshot.Application, []}
+      mod: {SocialMediaSnapshot.Application, [env: Mix.env()]}
     ]
   end
 
@@ -37,7 +37,8 @@ defmodule SocialMediaSnapshot.MixProject do
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
       {:commanded_ecto_projections, "~> 0.8",
-       git: "https://github.com/commanded/commanded-ecto-projections.git"}
+       git: "https://github.com/commanded/commanded-ecto-projections.git"},
+      {:bypass, "~> 1.0", only: :test}
     ]
   end
 

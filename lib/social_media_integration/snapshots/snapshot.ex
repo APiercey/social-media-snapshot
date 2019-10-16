@@ -3,7 +3,8 @@ defmodule SocialMediaIntegration.Snapshots.Snapshot do
 
   schema "snapshots" do
     field(:uuid, :string)
-    field(:user_id, :string)
+    field(:first_name, :string)
+    field(:last_name, :string)
     field(:status, :string)
   end
 end

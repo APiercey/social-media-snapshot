@@ -16,7 +16,6 @@ defmodule SocialMediaIntegration.Snapshots.SnapshotProjector do
 
   project(%SnapshotRequested{} = event, fn multi ->
     snapshot = %Snapshot{
-      user_id: event.user_id,
       uuid: event.snapshot_id,
       status: "requested"
     }
@@ -25,10 +24,16 @@ defmodule SocialMediaIntegration.Snapshots.SnapshotProjector do
     |> Ecto.Multi.insert(:insert_snapshot, snapshot)
   end)
 
-  project(%SnapshotSucceeded{snapshot_id: snapshot_id}, fn multi ->
-    with %Snapshot{} = snapshot <- Snapshot |> Repo.get_by(uuid: snapshot_id),
-         changes <- snapshot |> change(%{status: "successful"}) do
-      multi |> Ecto.Multi.update(:update_snapshot, changes)
-    end
+  project(%SnapshotSucceeded{snapshot_id: snapshot_id, payload: payload}, fn multi ->
+    changes =
+      Snapshot
+      |> Repo.get_by(uuid: snapshot_id)
+      |> change(%{
+        status: "successful",
+        first_name: payload.first_name,
+        last_name: payload.last_name
+      })
+
+    multi |> Ecto.Multi.update(:update_snapshot, changes)
   end)
 end

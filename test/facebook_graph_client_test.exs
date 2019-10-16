@@ -3,22 +3,19 @@ defmodule FacebookGraphClientTest do
 
   alias FacebookGraphClient.{FacebookGraphRequest, FacebookGraphResponse}
 
-  @valid_config_params [
-    token:
-      "EAAKjdnitRS0BAGKbEfWTZAtYyJGO172lMMLEsTYYoZB7xGDqVBJ1ny3TkmYRQjpv8xZBlo4LBiybROyZB2VwTfVgLKi6pcMDqtMLYbGnyHvezGdDdejcOK37Drx0Wv6xYkabUTYwz7NVaaXRaQa9ZAXAOt1gaZB9fHQoEElP5klyYhegNUHcYvoZCXlIjo1Fq4aQYshd8JeaLqgmFzef8TR",
-    user_id: "110584387001977"
-  ]
+  @valid_token Application.get_env(:social_media_snapshot, :test_token)
+  @valid_user_id Application.get_env(:social_media_snapshot, :test_user_id)
 
   describe "configure/1" do
     test "provides a %FacebookGraphRequest{}" do
       assert %FacebookGraphRequest{} =
-               @valid_config_params |> FacebookGraphClient.new()
+               [token: @valid_token, user_id: @valid_user_id] |> FacebookGraphClient.new()
     end
   end
 
   describe "fetch_user_information/1" do
     setup do
-      request = @valid_config_params |> FacebookGraphClient.new()
+      request = [token: @valid_token, user_id: @valid_user_id] |> FacebookGraphClient.new()
 
       %{request: request}
     end
